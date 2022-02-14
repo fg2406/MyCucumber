@@ -15,7 +15,7 @@ public class Driver {
         //alttaki yeri private yapariz singlon pattern kullanimi bu  sekilde
     }
 
-    static WebDriver driver;
+   private static WebDriver driver;
 
     public static WebDriver  getDriver(){
 
