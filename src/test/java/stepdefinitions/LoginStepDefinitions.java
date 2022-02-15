@@ -43,4 +43,8 @@ public class LoginStepDefinitions {     //steplerin ici ne kadar sade ve bos olu
     }
 
 
+    @Then("acilan sayfada ENTER ACCOUNT INFORMATION yazisinn gorunur oldugunu test eder")
+    public void acilanSayfadaENTERACCOUNTINFORMATIONYazisinnGorunurOldugunuTestEder() {
+
+    }
 }

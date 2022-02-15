@@ -1,39 +1,26 @@
 package utilities;
-
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-
-    public  static Properties properties;
-
+    private static Properties properties;
     static {
-        String path = "configuration.properties";  //once bu calisacak
-
+        String path="configuration.properties";
         try {
-
-            FileInputStream fis = new FileInputStream(path);  //bu try-catch arasinda sorun yoksa callisir varsa
+            FileInputStream fileInputStream=new FileInputStream(path);
             properties=new Properties();
-            properties.load(fis);
-            fis.close();
-
-
+            properties.load(fileInputStream);
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();   //burasi calisir hata ne ise verir
-
+            e.printStackTrace();
         }
-
     }
-
-    public static  String getProperty(String key){
-
-        return  properties.getProperty(key);
+    public static String getProperty(String key){
+        return properties.getProperty(key);
     }
-
-
-
-
-
 
 }

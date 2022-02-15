@@ -8,11 +8,14 @@ import org.junit.runner.RunWith;
     @RunWith(Cucumber.class)  //runner in cucumber ile calismasini saglar bu uyum
     @CucumberOptions(
 
+            plugin={"html:target\\cucumber-reports.html",
 
+                    "json:target/json-reports/cucumber.json",
+                    "junit:target/xml-report/cucumber.xml" },
             features ="src/test/java/resources/features",  //bilgisayarsaki features in yolunu koy
             glue="src/test/java/stepdefinitions",  //yapistirici demek glue,features ile nereyi yapistirayim(calistiracak birlikte),stepdefinitions kismini path aliriz
-            tags ="@hotel",          //buraya features teki feature icine senario nun ustune yazilian yazilir
-            dryRun=false
+            tags ="@register",          //buraya features teki feature icine senario nun ustune yazilian yazilir
+            dryRun=false    //false yapinca calisir rapor alinir
     )
 
 
@@ -21,3 +24,50 @@ import org.junit.runner.RunWith;
 
 
 }
+
+
+
+
+
+
+/*
+
+ @RunWith(Cucumber.class)  // bu notasyon nedeniyle JUnit kullaniriz
+ @CucumberOptions(
+        plugin={"html:target\\cucumber-reports.html",
+
+               "json:target/json-reports/cucumber.json",
+                "junit:target/xml-report/cucumber.xml" },
+        //HTML rapor almak icin plugin eklememiz yeterlidir.. runner dan calistirirsak rapor verir
+
+       // 1- bu notasyonun gorevi feature dosyalari ile stepdefinition dosyalarini birlestirmek
+       features="src/test/resources/features",
+        glue="stepdefinitions",
+        // boylece package'lari birbirine bagliyoruz
+        // bu iki paket altinda kactane class olursa olsun,
+        // herhangi bir class'da yazilan her adim diger class'lardaki adimlarla uyusursa yeni adim olusturmaya gerek kalmaz
+
+        tags="@register", // work in progress (@wip)
+        // 2-  @ testNG'degi group gibi calisir
+        // eger sadece 1 Feature veya 1 Scenario calistiracaksak, gidip feature dosyasindan calistirabiliriz
+       // birden fazla Feature veya Scenario calistirmak istedigimizde
+        // calistiracagimiz Feature veya Scenario 'lara ortak bir tag atamamiz ve bu tag'i
+        // runner'da belirtmemiz gerekir
+        // and dendiginde yazilan taglarin tamamini tasiyanlar calistirilir
+       // or dendiginde yazilan taglardan herhangi birine yada daha fazlasina sahip olanlar calisir
+        // butun test caseleri calistirmak icin hicbir tag belirtmeye gerek yoktur, tag i yorum haline getirmek yeterlidir..(21.satir)
+        // belirli bir tag belirtilirse bir kisitlama soz konusu olur
+
+
+        dryRun=false //tagname ekleyip bu sayfadan calistirinca false olmalidir..
+        // 3- dryRun-> true oldugunda test caseleri calistirmayi denemeden sadece eksik olan stepleri bana verir
+        // dryRun-> false oldugunda test caseleri calistirmayi dener eksik step bulursa onu rapor eder
+
+  )
+
+
+public class Runner {
+
+}
+
+   */
